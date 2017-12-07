@@ -17,8 +17,8 @@ end
 pol1 = 6.5 + exogenous_process(exogenous_state) + p.sigma_1 * randn(T,1);
 pol2 = exp(exogenous_process(exogenous_state)) .^ 1.5 + p.sigma_2 * randn(T,1);
 
-data = cat(3,pol1,pol2);
-clearvars -except data
+data2 = cat(3,pol1,pol2);
+clearvars -except data data2
 
 
 
