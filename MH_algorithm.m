@@ -41,7 +41,7 @@ prop_sig.all = [prop_sig.rho_1 prop_sig.rho_2 prop_sig.phi_1 ...
     prop_sig.sigma_B];
 
 % initial values for parameters
-init_params = [0.5 0.5 0.5 0.5 4 1 1 1];
+init_params = [0.5 0.5 0.1 -0.3 5 1 0.2 1];
 
 % length of sample
 M = 5000;
@@ -89,5 +89,14 @@ for m = 2:M
     
     waitbar(m/M)
 end
-
 toc
+avg_acc_rate=sum(acc_rate)/length(acc_rate);
+str={'\rho_1','\rho_2','\phi_1','\phi_2';'\beta','\sigma','\sigma_A','\sigma_B'};
+for i=1:2
+    figure('Name','Posterior Distribution');
+    for j=1:4
+        subplot(2,2,j);
+        histogram(parameters(:,4*(i-1)+j),50);
+        title(str{i,j});
+    end
+end
